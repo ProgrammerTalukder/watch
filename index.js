@@ -122,7 +122,6 @@ async function run(){
         })
         app.delete('/order/:id', async (req, res)=>{
             const id = req.params.id;
-            console.log(id)
             const query = {newid : id}
             const result = await orderCollection.deleteOne( query )
             console.log("deleting cart deleted", key)
@@ -130,7 +129,6 @@ async function run(){
         })
         app.delete('/watches/product/:id', async (req, res)=>{
             const id = req.params.id;
-            console.log(id)
             const query = {_id: ObjectId(id)}
             const result = await watchCollection.deleteOne( query )
             console.log("deleting carts deleted", id)
@@ -138,16 +136,16 @@ async function run(){
         })
         app.delete('/user/delete', async (req, res)=>{
             const id = req.query.id;
-            console.log(id)
             const query = {_id: ObjectId(id)}
             const result = await userCollection.deleteOne( query )
             console.log("deleting user deleted", id)
             res.json(result)
         })
-        app.delete('/order/id', async (req, res)=>{
-            const id = req.query.id;
+        app.delete('/admin/order/:id', async (req, res)=>{
+            const id = req.params.id;
             console.log(id)
             const query = {_id: ObjectId(id)}
+            console.log('hi')
             const result = await orderCollection.deleteOne( query )
             console.log("deleting order deleted", id)
             res.json(result)
